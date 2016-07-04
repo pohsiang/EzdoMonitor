@@ -1,0 +1,21 @@
+{
+  "name": "Ezdo Monitor",
+  "version": "1.0.0",
+  "description": "Show meters number",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "mysql",
+    "sockets",
+    "reactive"
+  ],
+  "author": "PoHsiang",
+  "dependencies": {
+    "express": "^4.13.3",
+    "mysql-live-select": "1.0.3",
+    "sockjs": "^0.3.15"
+  }
+}

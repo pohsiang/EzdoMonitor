@@ -1,0 +1,40 @@
+.hidden { display: none; }
+
+body {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  background: #f5f5f5;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-weight: normal;
+  line-height: 4.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.meters {
+  margin: 0px 0px 0px 0px;
+  padding: 0;
+  width: 100%;
+}
+
+.meters th{
+  font-size: 1.5rem;
+}
+
+.meters td{
+  font-size: 1.3rem;
+}
+
+.cond, .ph, .orp, .o, .ec , .name{
+    width: auto;
+    height: auto;
+    zoom: 1;
+    text-align: center;
+}
+
+
+
+
