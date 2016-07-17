@@ -3,10 +3,11 @@ var MeterItem = React.createClass({
     return {
       name: "",
       ph: 0,
-      orp: 0,
-      o: 0,
-      ec: 0,
-      cond: 0
+      ph_unit: ""
+//      orp: 0,
+//      o: 0,
+//      ec: 0,
+//     cond: 0
     };
   },
   componentWillReceiveProps: function(nextProps) {
@@ -21,11 +22,7 @@ var MeterItem = React.createClass({
     return (
         <tr className={className}>
         <td className="name">{item.name}</td>
-        <td className="ph" >{item.ph} </td>
-        <td className="orp">{item.orp} </td>
-        <td className="ec">{item.ec}</td>
-        <td className="o"> {item.o}</td>
-        <td className="cond"> {item.cond} </td>
+        <td className="ph" >{item.ph}{item.ph_unit} </td>
         </tr>
     );
   }

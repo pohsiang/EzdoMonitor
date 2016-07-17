@@ -22,10 +22,6 @@ var MeterList = React.createClass({
         <tr>
             <th>名稱</th>
             <th>酸鹼度</th>
-            <th>溶氧量</th>
-            <th>電導度</th>
-            <th>氧化還原</th>
-            <th>電導度</th>
         </tr>
         {items}
       </table>
