@@ -16,8 +16,11 @@ CREATE TABLE `meters` (
   `salt_unit` varchar(20) NOT NULL DEFAULT '0',
   `temp` varchar(20) NOT NULL DEFAULT '0',
   `temp_unit` varchar(20) NOT NULL DEFAULT '0',
-  `datetime` varchar(20) NOT NULL DEFAULT '0',
+  `tds` varchar(20) NOT NULL DEFAULT '0',
+  `tds_unit` varchar(20) NOT NULL DEFAULT '0',
+  `nowtime` varchar(20) NOT NULL DEFAULT '0',
+  `status` varchar(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 INSERT INTO `meters` (`name`, `ph`, `ph_unit`) VALUES 
-  ('Kepler', '7', '');
+  ('Kepler', '7', 'un');

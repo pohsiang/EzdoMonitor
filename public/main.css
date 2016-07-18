@@ -28,13 +28,15 @@ h1 {
   font-size: 1.3rem;
 }
 
-.cond, .ph, .orp, .o, .ec , .name{
+.cond, .ph, .orp, .o, .ec , .name, .time{
     width: auto;
     height: auto;
     zoom: 1;
     text-align: center;
 }
 
-
+.alert {
+    color:#ff0000;
+}
 
 
