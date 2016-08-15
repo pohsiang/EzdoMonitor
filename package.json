@@ -1,5 +1,5 @@
 {
-  "name": "Ezdo Monitor",
+  "name": "ezdo_monitor",
   "version": "1.0.0",
   "description": "Show meters number",
   "main": "index.js",
@@ -16,6 +16,7 @@
   "dependencies": {
     "express": "^4.13.3",
     "mysql-live-select": "1.0.3",
-    "sockjs": "^0.3.15"
+    "sockjs": "^0.3.15",
+    "d3": "~4.2.1"
   }
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <style>
+    .line {
+      fill: none;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
+
+    </style>
+    <title>History</title>
+    <link href="main.css" rel="stylesheet">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="dist/jquery.min.js"></script>
+    <script src="dist/react-0.12.2.js"></script>
+    <script src="dist/d3/d3.min.js"></script>
+    <script type=text/javascript>
+    var historyData = JSON.parse(<%- JSON.stringify(historyData) %>);
+    var drawLineChart = function(data) {
+        data.forEach(function(d){
+          data.value = d['value'];
+          data.exetime = d['exetime'];
+        });
+
+        var margin = {top: 20, right: 20, bottom: 30, left: 50},
+            width = 960 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+        var x = d3.scaleTime()
+            .range([0, width]);
+
+        var y = d3.scaleLinear()
+            .range([height, 0]);
+
+        var line = d3.line()
+            .x(function(d) { return x(d.exetime); })
+            .y(function(d) { return y(d.value); });
+
+        var svg = d3.select("#history_data").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        x.domain(d3.extent(data, function(d) { return d.exetime; }));
+        y.domain(d3.extent(data, function(d) { return d.value; }));
+
+        svg.append("path")
+          .datum(data)
+          .attr("class", "line")
+          .attr("d", line);
+        console.log(line);
+
+        svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x));
+
+        svg.append("g")
+          .call(d3.axisLeft(y));
+
+        svg.append("text")
+            .attr("transform",
+              "translate(" + (width/2) + " ," +
+                           (height + margin.top + 20) + ")")
+                           .style("text-anchor", "middle")
+                           .text("Date");
+                           svg.append("text")
+                       .attr("transform", "rotate(-90)")
+                       .attr("y", 0 - margin.left)
+                       .attr("x",0 - (height / 2))
+                       .attr("dy", "1em")
+                       .style("text-anchor", "middle")
+                       .text("Value");
+    };
+    document.addEventListener('DOMContentLoaded', function(event) {
+      drawLineChart(historyData);
+    });
+    </script>
+  </head>
+
+  <body>
+    <h1>History</h1>
+    <div id="history_data">
+    </div>
+  </body>
+</html>

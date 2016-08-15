@@ -2,6 +2,7 @@ var express = require('express');
 var sockjs = require('sockjs');
 var http = require('http');
 var LiveSelect = require('mysql-live-select');
+var mysql = require('mysql');
 
 var dbSettings = require('./settings');
 var sockOptions = {
@@ -14,6 +15,7 @@ var app = express();
 var server = http.createServer(app);
 var sock = sockjs.createServer(sockOptions);
 
+var db_connection = mysql.createConnection(dbSettings);
 // Cache socket connections
 var connected = [];
 
@@ -50,12 +52,22 @@ sock.on('connection', function(conn) {
 
 // Express configuration
 sock.installHandlers(server, { prefix:'/sock' });
+app.engine('.html', require('ejs').__express);
+app.set('view engine', 'html');
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/history.html', function (req, res) {
+  db_connection.query("SELECT * FROM historydata WHERE name='pool1' order by exetime desc", function(err, rows, fields) {
+    var data = {
+      historyData: JSON.stringify(rows)
+    };
+    res.render('history', data);
+  });
+});
+
 app.use('/', express.static(__dirname + '/public'));
 
 server.listen(5000);
-

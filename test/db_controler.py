@@ -19,7 +19,7 @@ for (name) in cursor:
         sql_string = "UPDATE `meters` SET `ph`='" +str(phNum)  
 #        sql_string += "',`do`='" +str(oNum)+"',`orp`='" +str(orpNum)
 #        sql_string += "',`salt`='"+str(eNum)+"',`cond`='"+str(condNum)
-        sql_string += "',`nowtime`='"+str(eNum)
+        sql_string += "',`datetime`='"+str(eNum)
         sql_string += "',`status`='"+str(statusNum)
         sql_string += "' WHERE `name`= '" + str(name[0])  + "'";
         cursor.execute(sql_string)
