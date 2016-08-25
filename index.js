@@ -60,7 +60,10 @@ app.get('/', function (req, res) {
 });
 
 app.get('/history.html', function (req, res) {
-  db_connection.query("SELECT * FROM historydata WHERE name='pool1' order by exetime desc", function(err, rows, fields) {
+  var poolName = req.query.name;
+  var type = req.query.type;
+  console.log("name:" + poolName + ", type:" + type);
+  db_connection.query("SELECT * FROM historydata WHERE name='"+ poolName +"' AND type='"+type +"' order by exetime desc", function(err, rows, fields) {
     var data = {
       historyData: JSON.stringify(rows)
     };

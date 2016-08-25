@@ -11,12 +11,12 @@ cursor.execute(clear_history_data_sql)
 db.commit()
 
 for x in range(1000):
-    phNum = round(random.uniform(0.1, 10.0), 1)
+    phNum = round(random.uniform(8.0, 9.2), 1)
     tempNum = random.randint(20, 30)
     ts = time.time() + x * 1000
     timeNum = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
     sql_string = "INSERT INTO `historydata` (`name`, `type`, `value`, `unit`, `temp`, `tempunit`, `exetime`) VALUES" 
-    sql_string += "('pool1','pH','"+str(phNum)+"','pH','"+str(tempNum)+"','C','"+str(timeNum)+"')"
+    sql_string += "('Kepler','pH','"+str(phNum)+"','pH','"+str(tempNum)+"','C','"+str(timeNum)+"')"
     print str(sql_string)
     cursor.execute(sql_string)
     db.commit()

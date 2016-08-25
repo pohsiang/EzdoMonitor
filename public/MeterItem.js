@@ -25,16 +25,16 @@ var MeterItem = React.createClass({
     if (item.status == 0) {
         return (
             <tr className={className}>
-            <td className="name"><a href={historyUrl}>{item.name}</a></td>
-            <td className="ph" >{item.ph}{item.ph_unit} </td>
+            <td className="name">{item.name}</td>
+            <td className="ph" ><a href={historyUrl + "&type=pH"}>{item.ph}{item.ph_unit}</a> </td>
             <td className="time">{item.datetime}</td>
             </tr>
         );
     } else if (item.status == 1){
         return (
             <tr className={className}>
-            <td className="name"><a href={historyUrl}>{item.name}</a></td>
-            <td className="ph alert" >{item.ph}{item.ph_unit} </td>
+            <td className="name">{item.name}</td>
+            <td className="ph alert" ><a href={historyUrl + "&type=pH"}>{item.ph}{item.ph_unit}</a> </td>
             <td className="time">{item.datetime}</td>
             </tr>
         );

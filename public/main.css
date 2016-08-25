@@ -39,4 +39,7 @@ h1 {
     color:#ff0000;
 }
 
-
+.ph a {
+    color: #000000;
+    text-decoration: none;
+}
